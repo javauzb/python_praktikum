@@ -1,5 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
 {% block title %} Sport xabarlari {% endblock title %}
 
@@ -8,14 +9,25 @@
     {% for news in sport_yangiliklari %}
         <div class="container">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-md-12">
                     <a href="{{ news.get_absolute_url }}">
-                    <img src="{{ news.image.url }}" alt="{{ new.title }}" style="width:50%">
-                    <h2>{{ news.title }}</h2>
+                        <h2>{{ news.title }}</h2>
+                        <p>Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true"></i>{% get_hit_count for news %}</p>
+                    <div class="card">
+                        <div class="col-md-4">
+                        <img src="{{ news.image.url }}" alt="{{ new.title }}" style="width:95%">
+                        </div>
+                    </div>
                     </a>
+                    <div class="col-md-8 card-body">
+                        <p class="card-body">
+                        {{ news.body | truncatewords:100}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     {% endfor %}
+<br>
 
 {% endblock content %}

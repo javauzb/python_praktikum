@@ -36,16 +36,27 @@
               <li><a href="{% url 'home_page'%}">Bosh sahifa</a></li>
               <li><a href="#">Biz haqimizda</a></li>
               <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
+              {% if user.is_authenticated and user.is_superuser %}
+              <li><a href="{% url 'admin_page' %}">Admin sahifasi</a></li>
+              {% endif %}
             </ul>
           </div>
           <div class="header_top_right">
-            <p>{% now "jS F Y H:i" %}</p>
+              {% if request.user.is_authenticated %}
+              <p><a href="{% url 'logout' %}" style="color: palegreen">Logout</a></p>
+              <p><a href="{% url 'user_profile' %}"style="color: yellow">My profile: {{ user.username }}</a></p>
+              {% else %}
+              <p><a href="{% url 'login' %}" style="color: yellow">Saytga kirish</a></p>
+              {% endif %}
+
+            <p>{% now 'jS F Y H:i' %}</p>
+
           </div>
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
-          <div class="logo_area"><a href="home.html" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>
+          <div class="logo_area"><a href="{% url 'home_page' %}" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>
           <div class="add_banner"><a href="#"><img src="{% static 'images/addbanner_728x90_V1.jpg' %}" alt=""></a></div>
         </div>
       </div>
@@ -65,6 +76,11 @@
           <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
           <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
           <!--<li><a href="{% url '404_page' %}">404 Page</a></li>-->
+          <li>
+            <form method="get" action="{% url 'search_results' %}">
+              <input type="search" name="q" placeholder="Qiriruv..." class="form-control">
+            </form>
+          </li>
         </ul>
       </div>
     </nav>
