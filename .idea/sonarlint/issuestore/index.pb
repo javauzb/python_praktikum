@@ -21,10 +21,6 @@ _
 /templates/registration/password_reset_done.html,e\b\eb0074894bbc2e5cdb46e76d00ee77d723cbed97
 c
 3templates/registration/password_reset_complete.html,0\3\03375d9393c3cd821005d2baac6b47524d6c9fc5
-B
-news_app/models.py,3\8\3874cbb1657d2646aa1b9b56930c9444736064b9
-L
-templates/news/mahalliy.html,9\f\9f73d963e906658cd156b553285b25600cc0bf3c
 O
 locale/ru/LC_MESSAGES/django.po,9\6\9621cde8d479328eac477cdcd1e1d220e8c4f135
 O

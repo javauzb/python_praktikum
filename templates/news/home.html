@@ -3,12 +3,16 @@
 {% load hitcount_tags %}
 {% load i18n %}
 
+
+
+
+
 {% block title %}
   {% blocktrans %}Bosh sahifa {% endblocktrans %}
 {% endblock %}
 
 {% block content %}
- <section id="sliderSection">
+ <section id="sliderSection" style="background-color:#90EE90">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
@@ -24,7 +28,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="latest_post">
-          <h2><span>{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</span></h2>
+          <h2 style="background-color:orange"><span>{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</span></h2>
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
@@ -46,19 +50,19 @@
     </div>
   </section>
 
-  <section id="contentSection">
+  <section id="contentSection" style="background-color:#90EE90">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="single_post_content">
-            <h2><span>{% blocktrans %}Mahalliy{% endblocktrans %}</span></h2>
+            <h2 style="background-color:orange"><span >{% blocktrans %}Mahalliy{% endblocktrans %}</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
 
                 {% for mahalliy in mahalliy_xabarlar %}
                   {% if forloop.first %}
                 <li>
-                  <figure class="bsbig_fig"> <a href="{{ mahalliy.get_absolute_url }}" class="featured_img"> <img alt="" src="{{ mahalliy.image.url}}"> <span class="overlay"></span> </a>
+                  <figure class="bsbig_fig"> <a href="{{ mahalliy.get_absolute_url }}" class="featured_img"> <img alt="" src="{{ mahalliy.image.url }}"> <span class="overlay"></span> </a>
                     <figcaption> <a href="{{ mahalliy.get_absolute_url }}">{{ mahalliy.title }}</a> </figcaption>
                     <p>{{ mahalliy.body | truncatewords:10 }}</p>
                     <p>{% blocktrans %}Ko'rilganlar soni: {% endblocktrans %}<i class="fa fa-eye" aria-hidden="true"></i>{% get_hit_count for mahalliy %} |
@@ -67,6 +71,7 @@
                 </li>
                   {% endif %}
                 {% endfor %}
+
               </ul>
             </div>
             <div class="single_post_content_right">
@@ -89,7 +94,7 @@
           <div class="fashion_technology_area">
             <div class="fashion">
               <div class="single_post_content">
-                <h2><span>{% blocktrans %}Xorij{% endblocktrans %}</span></h2>
+                <h2 style="background-color:orange"><span>{% blocktrans %}Xorij{% endblocktrans %}</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
                   {% for xorij in xorij_xabarlari %}
                     {% if forloop.first %}
@@ -120,7 +125,7 @@
             </div>
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>{% blocktrans %}Texnologiya{% endblocktrans %}</span></h2>
+                <h2 style="background-color:orange"><span>{% blocktrans %}Texnologiya{% endblocktrans %}</span></h2>
                 <ul class="business_catgnav">
                   {% for texnologiya in texnologiya_xabarlari %}
                     {% if forloop.first %}
@@ -151,7 +156,7 @@
             </div>
           </div>
           <div class="single_post_content">
-            <h2><span>{% blocktrans %}Rasmlar{% endblocktrans %}</span></h2>
+            <h2 style="background-color:orange"><span>{% blocktrans %}Rasmlar{% endblocktrans %}</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
               <li>
                 <div class="photo_grid">
@@ -186,7 +191,7 @@
             </ul>
           </div>
           <div class="single_post_content">
-            <h2><span>{% blocktrans %}Sport{% endblocktrans %}</span></h2>
+            <h2 style="background-color:orange"><span>{% blocktrans %}Sport{% endblocktrans %}</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav">
                 {% for sport in sport_xabarlari %}
@@ -223,7 +228,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
+            <h2 style="background-color:orange"><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
             <ul class="spost_nav">
               <li>
                 <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
@@ -248,7 +253,7 @@
             </ul>
           </div>
           <div class="single_sidebar">
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs" role="tablist" style="background-color:orange">
               <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
               <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
               <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
@@ -293,10 +298,10 @@
             </div>
           </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Sponsor</span></h2>
+            <h2 style="background-color:orange"><span>Sponsor</span></h2>
             <a class="sideAdd" href="#"><img src="{% static 'images/add_img.jpg' %}" alt=""></a> </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>{% blocktrans %}Barcha kategoriyalar{% endblocktrans %}</span></h2>
+            <h2 style="background-color:orange"><span>{% blocktrans %}Barcha kategoriyalar{% endblocktrans %}</span></h2>
             <select class="catgArchive">
               <option>{% blocktrans %}Kategoriyani tanlang{% endblocktrans %}</option>
                 {% for kategory in categories %}
@@ -305,7 +310,7 @@
             </select>
           </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Links</span></h2>
+            <h2 style="background-color:orange"><span>Links</span></h2>
             <ul>
               <li><a href="#">Blog</a></li>
               <li><a href="#">Rss Feed</a></li>

@@ -26,6 +26,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+
+# ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ["django-mohirdev-demo.uz", 'www.django-mohirdev-demo.uz', '127.0.0.1']
 
 
@@ -112,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'uz-uz'
+LANGUAGE_CODE = 'uz-UZ'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -136,12 +138,14 @@ LOCALE_PATHS = BASE_DIR, 'locale'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATIC_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/staticfiles'
 STATICFILES_DIRS = ('/home/djangomo/django-mohirdev-demo.uz/django/static',)
 
 #local
-# STATICFILES_DIRS = [BASE_DIR / 'static']
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATICFILES_DIRS = [BASE_DIR / 'static'] #debug = True
+# STATIC_ROOT = BASE_DIR / 'staticfiles'  #debug = False
+
 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -150,7 +154,10 @@ STATICFILES_FINDERS = [
 
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = '/home/djangomo/django-mohirdev-demo.uz/django/media'
+
+
 
 #local
 # MEDIA_ROOT = BASE_DIR / 'media/'
@@ -170,4 +177,4 @@ LOGIN_URL = "login"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-
+# WHITENOISE_USE_FINDERS = True

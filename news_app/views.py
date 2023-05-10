@@ -28,7 +28,7 @@ def news_list(request):
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news, status=News.Status.Published)
     context = {}
-    #hitcount logic
+    # hitcount logic
     hit_count = get_hitcount_model().objects.get_for_object(news)
     hits = hit_count.hits
     hitcontext = context['hitcount'] = {'pk': hit_count.pk}
@@ -46,7 +46,7 @@ def news_detail(request, news):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            #yangi komment obektini yaratamiz lekin ma'lumotlar bazasiga saqlamaymiz
+            # yangi komment obektini yaratamiz lekin ma'lumotlar bazasiga saqlamaymiz
             new_comment = comment_form.save(commit=False)
             new_comment.news = news
             # comment egasini so'rov yuborayotgan userga bog'ladik
@@ -93,14 +93,12 @@ class HomePageView(ListView):
         context['categories'] = Category.objects.all()
         context['news_list'] = News.published.all().order_by('-publish_time')[:5]
 
-        context['mahalliy_xabarlar'] = News.published.all().filter(category__name="Mahalliy").order_by('-publish_time')[:5]
-        context['xorij_xabarlari'] = News.published.all().filter(category__name="Xorij").order_by('-publish_time')[:5]
-        context['sport_xabarlari'] = News.published.all().filter(category__name="Sport").order_by('-publish_time')[:5]
-        context['texnologiya_xabarlari'] = News.published.all().filter(category__name="Texnologiya").order_by('-publish_time')[:5]
+        context['mahalliy_xabarlar'] = News.published.all().filter(category__id=3).order_by('-publish_time')[:5]
+        context['xorij_xabarlari'] = News.published.all().filter(category__id=5).order_by('-publish_time')[:5]
+        context['texnologiya_xabarlari'] = News.published.all().filter(category__id=6).order_by('-publish_time')[:5]
+        context['sport_xabarlari'] = News.published.all().filter(category__id=4).order_by('-publish_time')[:5]
 
         return context
-
-
 
 
 # def contactPageView(request):
@@ -143,7 +141,7 @@ class LocalNewsView(ListView):
     context_object_name = 'mahalliy_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Mahalliy")
+        news = self.model.published.all().filter(category__id=3)
         return news
 
 
@@ -153,7 +151,7 @@ class ForeignNewsView(ListView):
     context_object_name = 'xorij_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Xorij")
+        news = self.model.published.all().filter(category__id=5)
         return news
 
 
@@ -163,7 +161,7 @@ class TechnologyNewsView(ListView):
     context_object_name = 'texnologik_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Texnologiya")
+        news = self.model.published.all().filter(category__id=6)
         return news
 
 
@@ -173,13 +171,13 @@ class SportNewsView(ListView):
     context_object_name = 'sport_yangiliklari'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Sport")
+        news = self.model.published.all().filter(category__id=4)
         return news
 
 
-class NewsUpdateView(OnlyLoggedSuperUser ,UpdateView):
+class NewsUpdateView(OnlyLoggedSuperUser, UpdateView):
     model = News
-    fields = ('title', 'body', 'image', 'category', 'status', )
+    fields = ('title', 'body', 'image', 'category', 'status',)
     template_name = 'crud/news_edit.html'
 
 
@@ -217,7 +215,6 @@ class SearchResultsList(ListView):
         return News.objects.filter(
             Q(title__icontains=query) | Q(body__icontains=query)
         )
-
 
 
 def PageView404(request):

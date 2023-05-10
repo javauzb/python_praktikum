@@ -1,7 +1,7 @@
 {% extends 'news/base.html' %}
 {% load static %}
 {% load hitcount_tags %}
-
+{% load i18n %}
 
 
 
@@ -19,7 +19,7 @@
                     <div class="card">
 
                     <div class="col-md-4">
-                        <img class="img-fluid rounded-start" src="{{ news.image.url }}" alt="{{ new.title }}" style="width:95%">
+                        <img class="img-fluid rounded-start" src="{{ news.image.url }}" alt="{{ news.title }}" style="width:95%">
                     </div>
                     </div>
                     </a>
